@@ -49,11 +49,38 @@ export default function Home() {
       connected: false,
     },
   ]);
+
   const [selectedStar, setSelectedStar] = useState(stars[0]);
 
-  //check if star number 1 attribute the same as star number 2 attribute then change the connected value to true
+  //sum all the values of the attributes of the stars
+  const TotalAttribute = (attribute) => {
+    // total of attribute values
+    const sumOfValues = stars
+      .filter((star) => star.attributes?.attribute === attribute)
+      .map((star) => star.attributes.value)
+      .reduce((prev, curr) => prev + curr, 0);
+    //numnber of connected stars with same attribute
+    const connected =
+      stars.filter(
+        (star) =>
+          star.attributes?.attribute === attribute && star.connected === true
+      ).length + 1;
 
-  //function to edit attributes of stars
+    const total = (sum, con) => {
+      if (con === 1) return sum;
+      if (con === 2) return sum + sum * 0.1;
+      if (con === 3) return sum + sum * 0.13;
+      if (con === 4) return sum + sum * 0.15;
+      if (con === 5) return sum + sum * 0.18;
+      if (con === 6) return sum + sum * 0.21;
+      if (con === 7) return sum + sum * 0.25;
+      if (con === 8) return sum + sum * 0.3;
+      if (con === 9) return sum + sum * 0.5;
+    };
+    return parseFloat(total(sumOfValues, connected)).toFixed(1);
+  };
+
+  //function to add attributes to stars
   const addAttribute = (num, attributes) => {
     const newStars = [...stars];
     newStars[num - 1].attributes = attributes;
@@ -134,9 +161,9 @@ export default function Home() {
     }
   };
   return (
-    <div className='w-screen h-screen  flex justify-center'>
-      <div className='w-full bg-gray-600 flex justify-center flex-wrap '>
-        <div className='w-full max-h-32 bg-[#222222] flex items-center justify-center'>
+    <div className='w-screen h-screen'>
+      <div className='w-full h-full bg-gray-600 flex justify-center flex-wrap '>
+        <div className='w-full h-[7rem] bg-[#222222] flex items-center justify-center'>
           {stars.map((star) => (
             <div className='flex items-center' key={star.num}>
               <div
@@ -155,12 +182,21 @@ export default function Home() {
 
           {/* button to addatts */}
         </div>
-        <button
-          className='w-20 h-10 bg-yellow-400'
-          onClick={() => addAttribute(selectedStar.num, Study())}
-        >
-          Study
-        </button>
+        <div className='w-full h-[calc(100%-7rem)] bg-gray-600  p-2'>
+          <div className='w-full text-lg text-white'>
+            <p>M-Attack: {TotalAttribute('M-attack')}</p>
+            <p>P-Attack: {TotalAttribute('P-attack')}</p>
+            <p>breakthrough: {TotalAttribute('breakthrough')}</p>
+            <p>P-strike: {TotalAttribute('P-strike')}</p>
+            <p>HB: {TotalAttribute('HB')}</p>
+          </div>
+          <button
+            className='w-20 h-10 bg-yellow-400 mt-5'
+            onClick={() => addAttribute(selectedStar.num, Study())}
+          >
+            Study
+          </button>
+        </div>
       </div>
     </div>
   );
