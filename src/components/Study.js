@@ -1,13 +1,43 @@
-export default function Study() {
+export default function Study(pillType, prevQuality) {
   // let qualityList = ['epic', 'ultra', 'elite', 'unique', 'rare', 'normal'];
-  const qualityList = [
-    ['epic', 15],
-    ['ultra', 15],
-    ['elite', 20],
-    ['unique', 20],
-    ['rare', 30],
-    ['normal', 30],
-  ];
+  let oldQuality = 0;
+  if (prevQuality === 'epic') {
+    oldQuality = 200;
+  } else if (prevQuality === 'ultra') {
+    oldQuality = 100;
+  } else {
+    oldQuality = 0;
+  }
+
+  let qualityList;
+  if (pillType === 'normal') {
+    qualityList = [
+      ['epic', 15 + oldQuality],
+      ['ultra', 15 + oldQuality],
+      ['elite', 20],
+      ['unique', 20],
+      ['rare', 30],
+      ['normal', 30],
+    ];
+  } else if (pillType === 'special') {
+    qualityList = [
+      ['epic', 20 + oldQuality],
+      ['ultra', 20 + oldQuality],
+      ['elite', 20],
+      ['unique', 20],
+      ['rare', 30],
+      ['normal', 30],
+    ];
+  } else if (pillType === 'senior') {
+    qualityList = [
+      ['epic', 25 + oldQuality],
+      ['ultra', 30 + oldQuality],
+      ['elite', 20],
+      ['unique', 20],
+      ['rare', 30],
+      ['normal', 30],
+    ];
+  }
 
   //function to get random quality
   function getQuality(data) {

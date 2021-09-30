@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import './Home.css';
 export default function Home() {
   const [checked, setChecked] = useState(false);
+  const [radio, setRadio] = useState('normal');
   const [prevStar, setPrevStar] = useState(null);
   const [nextStar, setNextStar] = useState(null);
   const [stars, setStars] = useState([
@@ -54,6 +55,7 @@ export default function Home() {
   ]);
 
   const [selectedStar, setSelectedStar] = useState(stars[0]);
+  let oldQuality = selectedStar?.attributes?.quality;
 
   //sum all the values of the attributes of the stars
   const TotalAttribute = (attribute) => {
@@ -160,6 +162,7 @@ export default function Home() {
       }
     }
   };
+
   //function to switch on star colors
   const switchColor = (attribute) => {
     switch (attribute) {
@@ -179,6 +182,13 @@ export default function Home() {
     }
   };
 
+  function toggleRadio(value) {
+    if (radio === value) {
+      return 'normal';
+    } else {
+      return value;
+    }
+  }
   //function to switch on star border color
   const switchBorderColor = (quality) => {
     switch (quality) {
@@ -218,6 +228,7 @@ export default function Home() {
         return 'text-[#333]';
     }
   };
+
   return (
     <div className='w-screen h-screen'>
       <div className='w-full h-full bg-gray-600 flex justify-center flex-wrap '>
@@ -251,16 +262,34 @@ export default function Home() {
           <div className='text-white'>
             <button
               className='w-20 h-10 bg-yellow-400 mt-5'
-              onClick={() => normalStudy(selectedStar.num, Study())}
+              onClick={() =>
+                normalStudy(selectedStar.num, Study(radio, oldQuality))
+              }
             >
               Study
             </button>
             <form>
-              <label className=' mr-1'>Use Protection pill</label>
+              <label className=' mr-1'>Use Protection Pill</label>
               <input
                 type='checkbox'
                 checked={checked}
                 onChange={(e) => setChecked(e.target.checked)}
+              />
+              <br />
+              <label className=' mr-1'>Use Special Training Pill</label>
+              <input
+                type='checkbox'
+                checked={radio === 'special'}
+                value='special'
+                onChange={(e) => setRadio(toggleRadio('special'))}
+              />
+              <br />
+              <label className=' mr-1'>Use Senior Training Pill</label>
+              <input
+                type='checkbox'
+                checked={radio === 'senior'}
+                value='senior'
+                onChange={(e) => setRadio(toggleRadio('senior'))}
               />
             </form>
             {prevStar && (
