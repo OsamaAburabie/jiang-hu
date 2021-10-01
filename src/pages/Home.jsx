@@ -170,7 +170,7 @@ export default function Home() {
         return 'bg-[#ff0000]';
       case 'P-attack':
         return 'bg-[#ffa500]';
-      case 'HB':
+      case 'HP':
         return 'bg-[#ffff00]';
       case 'breakthrough':
         return 'bg-[#008000]';
@@ -197,7 +197,7 @@ export default function Home() {
       case 'ultra':
         return 'border-[12px] border-[#E8A651]';
       case 'elite':
-        return 'border-[12px] border-[#643CA8]';
+        return 'border-[12px] border-[#782269]';
       case 'unique':
         return 'border-[12px] border-[#3A7858]';
       case 'rare':
@@ -216,7 +216,7 @@ export default function Home() {
       case 'ultra':
         return 'text-[#E8A651]';
       case 'elite':
-        return 'text-[#643CA8]';
+        return 'text-[#782269]';
       case 'unique':
         return 'text-[#3A7858]';
       case 'rare':
@@ -232,7 +232,7 @@ export default function Home() {
   return (
     <div className='w-screen h-screen'>
       <div className='w-full h-full bg-gray-600 flex justify-center flex-wrap '>
-        <div className='w-full h-[7rem] bg-[#222222] flex items-center justify-center'>
+        <div className='w-full h-[7rem] bg-[#111] flex items-center justify-center'>
           {stars.map((star, index) => (
             <div className='flex items-center' key={star.num}>
               <div
@@ -251,17 +251,17 @@ export default function Home() {
 
           {/* button to addatts */}
         </div>
-        <div className='w-full h-[calc(100%-7rem)] bg-gray-800  p-2'>
+        <div className='w-full h-[calc(100%-7rem)] bg-[#222]  p-2'>
           <div className='w-full text-lg text-white'>
             <p>M-Attack: {TotalAttribute('M-attack')}</p>
             <p>P-Attack: {TotalAttribute('P-attack')}</p>
             <p>breakthrough: {TotalAttribute('breakthrough')}</p>
             <p>P-strike: {TotalAttribute('P-strike')}</p>
-            <p>HP: {TotalAttribute('HB')}</p>
+            <p>HP: {TotalAttribute('HP')}</p>
           </div>
           <div className='text-white'>
             <button
-              className='w-20 h-10 bg-yellow-400 mt-5'
+              className='w-20 h-10 bg-yellow-400 mt-5 '
               onClick={() =>
                 normalStudy(selectedStar.num, Study(radio, oldQuality))
               }
@@ -293,27 +293,33 @@ export default function Home() {
               />
             </form>
             {prevStar && (
-              <p className={`${switchTextColor(prevStar.quality)}`}>
-                (previous) {prevStar.attribute} +{prevStar.value} (
-                {prevStar.quality})
-              </p>
+              <>
+                <p>========================================</p>
+                <p className={`${switchTextColor(prevStar.quality)}`}>
+                  (previous) {prevStar.attribute} +{prevStar.value} (
+                  {prevStar.quality})
+                </p>
+              </>
             )}
             {nextStar && (
-              <p className={`${switchTextColor(nextStar.quality)}`}>
-                (new) {nextStar.attribute} +{nextStar.value} ({nextStar.quality}
-                )
-              </p>
+              <>
+                <p className={`${switchTextColor(nextStar.quality)}`}>
+                  (new) {nextStar.attribute} +{nextStar.value} (
+                  {nextStar.quality})
+                </p>
+                <p>========================================</p>
+              </>
             )}
             {prevStar && nextStar && (
               <>
                 <button
-                  className='h-10 bg-yellow-400 mt-5 mr-2 p-2'
+                  className='h-10 bg-yellow-400 mt-5 mr-2 p-2 '
                   onClick={() => keepOld()}
                 >
                   Keep old attributes
                 </button>
                 <button
-                  className=' h-10 bg-yellow-400 mt-5 p-2'
+                  className=' h-10 bg-yellow-400 mt-5 p-2 '
                   onClick={() => replace()}
                 >
                   Replace

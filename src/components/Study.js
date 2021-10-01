@@ -62,7 +62,7 @@ export default function Study(pillType, prevQuality) {
   function generateAttribute(attribute, quality) {
     const epic_M_Attack = 320;
     const epicl_P_Attack = 240;
-    const epic_HB = 600;
+    const epic_HP = 600;
     const epic_breakthrogh = 2;
     const epic_P_Strike = 2;
 
@@ -120,96 +120,19 @@ export default function Study(pillType, prevQuality) {
     };
 
     // M_Attack ===============================================================
-    if (attribute === 'M-attack' && quality === 'epic')
+    if (attribute === 'M-attack')
       return attributeCalculation(epic_M_Attack, attribute, quality);
-
-    if (attribute === 'M-attack' && quality === 'ultra')
-      return attributeCalculation(epic_M_Attack, attribute, quality);
-
-    if (attribute === 'M-attack' && quality === 'elite')
-      return attributeCalculation(epic_M_Attack, attribute, quality);
-
-    if (attribute === 'M-attack' && quality === 'unique')
-      return attributeCalculation(epic_M_Attack, attribute, quality);
-
-    if (attribute === 'M-attack' && quality === 'rare')
-      return attributeCalculation(epic_M_Attack, attribute, quality);
-
-    if (attribute === 'M-attack' && quality === 'normal')
-      return attributeCalculation(epic_M_Attack, attribute, quality);
-
     // P_Attack ===============================================================
-    if (attribute === 'P-attack' && quality === 'epic')
+    if (attribute === 'P-attack')
       return attributeCalculation(epicl_P_Attack, attribute, quality);
-
-    if (attribute === 'P-attack' && quality === 'ultra')
-      return attributeCalculation(epicl_P_Attack, attribute, quality);
-
-    if (attribute === 'P-attack' && quality === 'elite')
-      return attributeCalculation(epicl_P_Attack, attribute, quality);
-
-    if (attribute === 'P-attack' && quality === 'unique')
-      return attributeCalculation(epicl_P_Attack, attribute, quality);
-
-    if (attribute === 'P-attack' && quality === 'rare')
-      return attributeCalculation(epicl_P_Attack, attribute, quality);
-
-    if (attribute === 'P-attack' && quality === 'normal')
-      return attributeCalculation(epicl_P_Attack, attribute, quality);
-    // HB ===============================================================
-    if (attribute === 'HB' && quality === 'epic')
-      return attributeCalculation(epic_HB, attribute, quality);
-
-    if (attribute === 'HB' && quality === 'ultra')
-      return attributeCalculation(epic_HB, attribute, quality);
-
-    if (attribute === 'HB' && quality === 'elite')
-      return attributeCalculation(epic_HB, attribute, quality);
-
-    if (attribute === 'HB' && quality === 'unique')
-      return attributeCalculation(epic_HB, attribute, quality);
-
-    if (attribute === 'HB' && quality === 'rare')
-      return attributeCalculation(epic_HB, attribute, quality);
-
-    if (attribute === 'HB' && quality === 'normal')
-      return attributeCalculation(epic_HB, attribute, quality);
-
+    // HP ===============================================================
+    if (attribute === 'HP')
+      return attributeCalculation(epic_HP, attribute, quality);
     // breakthrough ===============================================================
-    if (attribute === 'breakthrough' && quality === 'epic')
-      return attributeCalculation(epic_breakthrogh, attribute, quality);
-
-    if (attribute === 'breakthrough' && quality === 'ultra')
-      return attributeCalculation(epic_breakthrogh, attribute, quality);
-
-    if (attribute === 'breakthrough' && quality === 'elite')
-      return attributeCalculation(epic_breakthrogh, attribute, quality);
-
-    if (attribute === 'breakthrough' && quality === 'unique')
-      return attributeCalculation(epic_breakthrogh, attribute, quality);
-
-    if (attribute === 'breakthrough' && quality === 'rare')
-      return attributeCalculation(epic_breakthrogh, attribute, quality);
-
-    if (attribute === 'breakthrough' && quality === 'normal')
+    if (attribute === 'breakthrough')
       return attributeCalculation(epic_breakthrogh, attribute, quality);
     // P_Strike ===============================================================
-    if (attribute === 'P-strike' && quality === 'epic')
-      return attributeCalculation(epic_P_Strike, attribute, quality);
-
-    if (attribute === 'P-strike' && quality === 'ultra')
-      return attributeCalculation(epic_P_Strike, attribute, quality);
-
-    if (attribute === 'P-strike' && quality === 'elite')
-      return attributeCalculation(epic_P_Strike, attribute, quality);
-
-    if (attribute === 'P-strike' && quality === 'unique')
-      return attributeCalculation(epic_P_Strike, attribute, quality);
-
-    if (attribute === 'P-strike' && quality === 'rare')
-      return attributeCalculation(epic_P_Strike, attribute, quality);
-
-    if (attribute === 'P-strike' && quality === 'normal')
+    if (attribute === 'P-strike')
       return attributeCalculation(epic_P_Strike, attribute, quality);
     // default ===============================================================
     return 'Wrong Entries';
@@ -218,7 +141,7 @@ export default function Study(pillType, prevQuality) {
   const attributeNames = [
     'M-attack',
     'P-attack',
-    'HB',
+    'HP',
     'breakthrough',
     'P-strike',
   ];
