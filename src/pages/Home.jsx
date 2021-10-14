@@ -294,7 +294,7 @@ export default function Home() {
             </form>
             {prevStar && (
               <>
-                <p>=========================================</p>
+                <p>========================================</p>
                 <p className={`${switchTextColor(prevStar.quality)}`}>
                   (previous) {prevStar.attribute} +{prevStar.value} (
                   {prevStar.quality})
@@ -307,7 +307,7 @@ export default function Home() {
                   (new) {nextStar.attribute} +{nextStar.value} (
                   {nextStar.quality})
                 </p>
-                <p>=========================================</p>
+                <p>========================================</p>
               </>
             )}
             {prevStar && nextStar && (
